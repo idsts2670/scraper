@@ -54,8 +54,7 @@ user_name = page[28:-1]
 
 
 # https://christophegaron.com/articles/mind/automation/scraping-linkedin-posts-with-selenium-and-beautiful-soup/
-# for company profile
-# driver.get(page + 'posts/')
+# for company profile -> driver.get(page + 'posts/')
 # for personal profile
 driver.get(page + 'recent-activity/')
 SCROLL_PAUSE_TIME = 1.5
