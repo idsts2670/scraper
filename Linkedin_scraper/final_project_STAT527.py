@@ -35,3 +35,12 @@ driver = webdriver.Chrome(PATH)
 time.sleep(5)
 driver.get("https://www.linkedin.com/uas/login")
 time.sleep(5)
+
+# tell the driver to login with the credentials provided above
+email = driver.find_element(By.ID, 'username')
+email.send_keys(USERNAME)
+password = driver.find_element(By.ID, 'password')
+password.send_keys(PASSWORD)
+time.sleep(3)
+password.send_keys(Keys.RETURN)
+# driver.quit()
