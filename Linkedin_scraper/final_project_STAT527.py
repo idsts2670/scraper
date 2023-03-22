@@ -44,3 +44,34 @@ password.send_keys(PASSWORD)
 time.sleep(3)
 password.send_keys(Keys.RETURN)
 # driver.quit()
+
+
+page = input("Enter the Company or User Linkedin URL: ")
+# if its company
+company_name = page[33:-1]
+# if its user
+user_name = page[28:-1]
+
+
+# https://christophegaron.com/articles/mind/automation/scraping-linkedin-posts-with-selenium-and-beautiful-soup/
+# for company profile
+# driver.get(page + 'posts/')
+# for personal profile
+driver.get(page + 'recent-activity/')
+SCROLL_PAUSE_TIME = 1.5
+# get scroll height
+last_height = driver.execute_script("return document.body.scrollHeight")
+
+
+while True:
+    # scroll down to bottom
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+    # wait to load page
+    time.sleep(SCROLL_PAUSE_TIME)
+
+    # calculate new scroll height and compare with last scroll height
+    new_height = driver.execute_script("return document.body.scrollHeight")
+    if new_height == last_height:
+        break
+    last_height = new_height
