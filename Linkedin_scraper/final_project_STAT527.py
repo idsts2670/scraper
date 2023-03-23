@@ -45,18 +45,18 @@ time.sleep(3)
 password.send_keys(Keys.RETURN)
 # driver.quit()
 
-
-page = input("Enter the Company or User Linkedin URL: ")
+# eg: https://www.linkedin.com/in/tsuhao-fu-profile/
+linkedin_page = input("Enter the Company or User Linkedin URL: ")
 # if its company
-company_name = page[33:-1]
+company_name = linkedin_page[33:-1]
 # if its user
-user_name = page[28:-1]
+user_name = linkedin_page[28:-1]
 
 
-# https://christophegaron.com/articles/mind/automation/scraping-linkedin-posts-with-selenium-and-beautiful-soup/
-# for company profile -> driver.get(page + 'posts/')
-# for personal profile
-driver.get(page + 'recent-activity/')
+# if we want to check the person's posts, change driver.get as below
+## for company profile -> driver.get(page + 'posts/')
+## for personal profile -> driver.get(page + 'recent-activity/')
+driver.get(linkedin_page)
 SCROLL_PAUSE_TIME = 1.5
 # get scroll height
 last_height = driver.execute_script("return document.body.scrollHeight")
@@ -74,3 +74,26 @@ while True:
     if new_height == last_height:
         break
     last_height = new_height
+
+
+# get current URL source code
+pages = driver.page_source
+
+# use beautiful Soup to get access tags
+## warning: beautiful soup uses Xpath
+linkedin_soup = bs(pages.encode("utf-8"), "html")
+linkedin_soup.prettify()
+containers = linkedin_soup.find_all("div", {"class":"pvs-entity pvs-entity--padded pvs-list__item--no-padding-in-columns"})
+# for i in range(len(containers)):
+#     print(containers[i].text)
+
+# or simply use the below
+time.sleep(5)
+find = driver.find_elements(by = By.XPATH, value = '//div[@class="display-flex flex-row justify-space-between"]')
+
+# somehow, the outputs are duplicated.. need to fix
+for i in range(len(find)):
+    print(find[i].text)
+
+
+
