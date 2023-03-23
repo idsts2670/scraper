@@ -45,7 +45,7 @@ time.sleep(3)
 password.send_keys(Keys.RETURN)
 # driver.quit()
 
-# eg: https://www.linkedin.com/in/tsuhao-fu-profile/
+# eg: https://www.linkedin.com/in/idsts2670/
 linkedin_page = input("Enter the Company or User Linkedin URL: ")
 # if its company
 company_name = linkedin_page[33:-1]
@@ -89,11 +89,15 @@ containers = linkedin_soup.find_all("div", {"class":"pvs-entity pvs-entity--padd
 
 # or simply use the below
 time.sleep(5)
-find = driver.find_elements(by = By.XPATH, value = '//div[@class="display-flex flex-row justify-space-between"]')
+find = driver.find_elements(by = By.XPATH, value = '//div[@class="display-flex flex-column full-width align-self-center"]')
 
-# somehow, the outputs are duplicated.. need to fix
+# input the extracted data into the list
+l = []
 for i in range(len(find)):
-    print(find[i].text)
+    l.append(find[i].text)
+
+list = [*set(l)]
+print(list)
 
 
 
