@@ -27,7 +27,7 @@ time.sleep(1)
 driver.find_element("xpath", '//*[@id="organic-div"]/form/div[3]/button').click()
 
 # go to job page, the url here is data scientist job posting. Replace with the job you want to scrape.
-driver.get("https://www.linkedin.com/jobs/search/?currentJobId=3601815902&f_E=2%2C3&f_JT=F&f_SB2=2&f_T=340%2C370%2C29&f_WT=1%2C3&geoId=103644278&keywords=data%20analyst&location=United%20States&refresh=true&sortBy=R")
+driver.get("https://www.linkedin.com/jobs/search/?currentJobId=3569702242&f_TPR=r86400&geoId=103644278&keywords=software%20engineer&location=United%20States&refresh=true")
 
 links = []
 print('Links collecting now.')
