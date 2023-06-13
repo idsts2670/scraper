@@ -4,6 +4,7 @@ Selenium and Beautiful Soup Crawler for LinkedIn Jobs
 1. (*Recommend*) create and run the virtual environment first
 ```
 $conda create -n python39(any name for virtual env) python=3.9
+$conda create -n python39 python=3.9 -f environment.yml
 
 For MacOS
 $conda activate python39
@@ -11,19 +12,20 @@ For Windows
 C:(**)>activate python39
 
 For MacOS
-$conda deactivate python39
+$conda deactivate
 For Windows
 C:(**)>deactivate python39
 
 ```
 
 2. Run
-might need to do this
-https://timonweb.com/misc/fixing-error-chromedriver-cannot-be-opened-because-the-developer-cannot-be-verified-unable-to-launch-the-chrome-browser-on-mac-os/
+if you make the virtual env with yml file, no need to do the below
 ``` 
 pip3 install -r requirement.txt
-python3 -m pip install --user --upgrade --no-cache selenium
+python3 -m pip3 install --user --upgrade --no-cache selenium
 ```
+beside these above, you might need to do this
+https://timonweb.com/misc/fixing-error-chromedriver-cannot-be-opened-because-the-developer-cannot-be-verified-unable-to-launch-the-chrome-browser-on-mac-os/
 
 3. Enter the Linkedin Credentials in Config.yaml
 
